@@ -1,0 +1,120 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>My todo app</title>
+</head>
+<body class="vh vw">
+    <div class="add-task d-flex flex-row justify-center align-center">
+        <img src="{% static 'img/plus.svg' %}" alt="">
+    </div>
+    <div class="show-task-details d-none justify-center align-center vh vw">
+        <div class="container d-flex flex-column justify-start align-start">
+            <img id="close-show-task-details" src="{% static 'img/three-dots.svg' %}">
+            <div>
+                <h3 class="small">Title</h3>
+                <p id="title"></p>
+            </div>
+            <div>
+                <h3 class="small">Description</h3>
+                <p id="description"></p>
+            </div>
+            <div>
+                <h3 class="small">Date & time</h3>
+                
+                <p id="date"></p>
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="show-task-edit d-none justify-center align-center vh vw">
+        <div class="container d-flex flex-column justify-start align-start">
+            <img id="close-show-task-edit" src="{% static 'img/three-dots.svg' %}">
+            <form id="edit-task-form">
+                <input type="hidden" id="edit-pk">
+                <div>
+                    <h3 class="small">Title</h3>
+                    <input type="text" name="edit-title" id="edit-title">
+                </div>
+                <div>
+                    <h3 class="small">Description</h3>
+                    <textarea name="edit-description" id="edit-description"></textarea>
+                </div>
+                <div>
+                    <h3 class="small">Date & time</h3><span id="edit-datetime-output" class="small"></span>
+                    <input type="datetime-local" name="edit-datetime" id="edit-datetime">
+                </div>
+                <div>
+                    <input type="submit" value="Apply changes">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="add-new-task d-none justify-center align-center vh vw">
+        <div class="container d-flex flex-column justify-start align-start">
+            <img id="close-add-new-task" src="{% static 'img/three-dots.svg' %}">
+            <form id="add-new-task-form">
+                <div>
+                    <h3 class="small">Title</h3>
+                    <input type="text" name="add-task-title" id="add-task-title">
+                </div>
+                <div>
+                    <h3 class="small">Description</h3>
+                    <textarea name="add-task-description" id="add-task-description"></textarea>
+                </div>
+                <div>
+                    <h3 class="small">Date & time</h3><span id="edit-datetime-output" class="small"></span>
+                    <input type="datetime-local" name="add-task-datetime" id="add-task-datetime">
+                </div>
+                <div>
+                    <input type="submit" value="Add task">
+                </div>
+            </form>
+        </div>
+    </div>
+    <nav class="d-flex flex-row justify-between w-100">
+        <h3>Welcome, <span>{{user}}</span></h3>
+        <div class="profile-picture tooltip">
+            {% if user is AnonymousUser %}
+                <span>AU</span>
+            {% else %}
+                <img src="" alt="">
+            {% endif %}
+            <span class="tooltiptext">{{user}} Profile</span>
+        </div>
+    </nav>
+    <section class="main">
+        <h1>Your tasks</h1>
+
+        {% for task in tasks %}
+            <div class="task d-flex flex-row justify-between align-center" data-taskId="{{task.pk}}">
+                <div class="task-l d-flex flex-row align-center">
+                    <div class="task-img d-flex justify-center align-center small">{{task.get_initials}}</div>
+                    <div class="task-details">
+                        <h3>{{task.title}}</h3>
+                        <p class="small">{{task.time}}</p>
+                    </div>
+                </div>
+                <div class="options d-flex flex-row">
+                    <span class="view-task"><img src="{% static 'img/eye.svg' %}" alt=""></span>
+                    <span class="edit-task"><img src="{% static 'img/pencil.svg' %}" alt=""></span>
+                    <span class="delete-task"><a href="{% url 'task:delete_task' pk=task.pk %}"><img src="{% static 'img/trash.svg' %}" alt=""></a></span>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+    <footer class="d-flex justify-center align-center">
+        <p>Developed with love by Oswald Tragger</p>
+    </footer>
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

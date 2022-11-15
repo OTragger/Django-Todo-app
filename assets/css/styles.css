@@ -1,0 +1,289 @@
+:root{
+    --body-color: rgb(32, 31, 37);
+    --component-color: rgb(43, 49, 55);
+    --component-color-hover: rgb(51, 58, 66);
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: var(--body-color);
+    color: #c9c9c9;
+}
+
+nav{
+    padding: 20px;
+    box-shadow: 0px 5px 5px -5px rgba(0, 0, 0, 0.574);
+}
+
+.main{
+    padding: 20px;
+}
+
+.main>h1{
+    padding-bottom: 20px;
+}
+
+footer{
+    height: 60px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    box-shadow: 0px 5px 5px 5px rgba(0, 0, 0, 0.574);
+}
+
+
+.profile-picture{
+    height: 30px;
+    width: 30px;
+    background-color: aliceblue;
+    border-radius: 50px;
+}
+
+.add-task{
+    width: 60px;
+    background-color: rgb(97, 163, 211);
+    height: 60px;
+    border-radius: 50px;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 2;
+    cursor: pointer;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.371);
+    transition: all .2s ease-in-out;
+}
+
+.add-task>img{
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    object-position: center;
+}
+
+.add-task:hover{
+    transform: scale(.95);
+}
+
+.options>span{
+    padding: 9px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+
+.options>span:hover >img{
+    fill: white;
+}
+
+.view-task:hover{
+    background-color: rgb(58, 155, 234);
+}
+.edit-task:hover{
+    background-color: rgb(34, 185, 135);
+}
+.delete-task:hover{
+    background-color: rgb(238, 86, 86);
+}
+
+.task{
+    padding: 10px;
+    margin-bottom: 5px;
+    background-color: var(--component-color);
+    border-bottom: 1px solid rgb(77, 77, 77);
+    border-radius: 5px;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.371);
+    transition: all .8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.task:hover{
+    background-color: var(--component-color-hover);
+    transform: scale(.99);
+}
+
+.task-img{
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    background-color: coral;
+    border-radius: 5px;
+    color: #fff;
+}
+
+
+.show-task-details, .show-task-edit, .add-new-task{
+    z-index: 10;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.475);
+    
+    /* filter: blur(16px); */
+}
+
+.show-task-details .container, .show-task-edit .container, .add-new-task .container{
+    padding: 40px;
+    border: 1px solid #c9c9c9;
+    border-radius: 10px;
+    background-color: var(--body-color);
+    text-align: start;
+    width: 400px;
+    position:relative;
+}
+
+.show-task-details .container h3, .show-task-edit .container h3, .add-new-task .container h3{
+    text-decoration: underline;
+    color: coral;
+}
+
+#close-show-task-details, #close-show-task-edit, #close-add-new-task{
+    position: absolute;
+    top:10px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.show-task-details .container >div, .show-task-edit .container >div, .add-new-task .container >div{
+    padding: 10px;
+}
+
+form{
+    width: 100%;
+}
+
+form input, form textarea{
+    background-color: #464646;
+    border: none;
+    padding: 10px;
+    border-radius: 3px;
+    margin: 10px 0;
+    color: #fff;
+    width: 100%;
+}
+
+/* tootips */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0px;
+    border-radius: 6px;
+
+    top: -5%;
+    right: 125%;
+    margin-left: -60px;
+ 
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip .tooltiptext::after {
+    content: " ";
+    position: absolute;
+    top: 50%; /* At the bottom of the tooltip */
+    left: 100%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent transparent black;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+
+
+.vh{
+    height: 100vh;
+}
+
+.vw{
+    width: 100vw;
+}
+
+.w-100{
+    width: 100%;
+}
+
+.h-100{
+    height: 100%;
+}
+
+.small{
+    font-size: 12px;
+}
+
+.d-flex{
+    display: flex;
+}
+
+.d-none{
+    display: none;
+}
+
+.flex-row{
+    flex-direction: row;
+}
+
+.flex-column{
+    flex-direction: column;
+}
+
+.justify-center{
+    justify-content: center;
+}
+
+.justify-start{
+    justify-content: start;
+}
+
+.justify-end{
+    justify-content: end;
+}
+
+.justify-between{
+    justify-content: space-between;
+}
+
+.justify-around{
+    justify-content: space-around;
+}
+
+.align-center{
+    align-items: center;
+}
+
+.align-start{
+    align-items: flex-start;
+}
+
+.align-end{
+    align-items: flex-end;
+}
+
+
+
+@media (max-width:500px) {
+    .task h3{
+        font-size: .9em;
+    }
+}
